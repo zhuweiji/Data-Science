@@ -1,0 +1,86 @@
+import turtle
+import colourlist
+from math import *
+tu = turtle.Turtle()
+screen = tu.screen
+screen.colormode(255)
+tu.speed(12)
+RADIUS = 288
+spin_angle = 2*pi/360
+#tu.hideturtle()
+
+def draw_inner_wheel():
+    tu.up()
+    tu.setpos(0, -RADIUS / 4)
+    tu.down()
+    tu.circle(RADIUS / 4)
+
+
+
+def draw_segment(colour, segment, x,y):
+    if segment == 0:
+        tu.fillcolor(colour)
+        #tu.begin_fill()
+        tu.begin_poly()
+        tu.pencolor(colour)
+        tu.up()
+        tu.setpos(0, RADIUS/4)
+        tu.down()
+        tu.setpos(0, RADIUS)
+        init_pos = tu.pos()  # saving inital position
+
+        tu.circle(-RADIUS, 360 / 24)  # drawing arc
+
+        arc_pos = tu.pos()  # saving position at end of arc
+        arc_heading = tu.heading()
+
+        home_angle = tu.towards(0, 0)  # drawing line back to inner circle
+        tu.setheading(home_angle)
+        tu.forward(3 * RADIUS / 4)
+
+        # tu.up()
+        # tu.setpos(0, RADIUS / 4)
+        # tu.down()
+        # tu.circle(-RADIUS / 4, 360/24)
+        # tu.up()
+        tu.setpos(arc_pos)  # setting pointer back to end of arc
+        # tu.down()
+
+        tu.setheading(arc_heading)
+        tu.end_poly()
+        chunk = tu.get_poly()
+        #tu.end_fill()
+    else:
+        tu.setpos(x, y)
+        init_pos = tu.pos()  # saving inital position
+        tu.pencolor(colour)
+
+        tu.circle(-RADIUS, 360 / 24)  # drawing arc
+
+        arc_pos = tu.pos()  # saving position at end of arc
+        arc_heading = tu.heading()
+
+        home_angle = tu.towards(0, 0)  # drawing line back to inner circle
+        tu.setheading(home_angle)
+        tu.forward(3 * RADIUS / 4)
+
+        tu.setpos(arc_pos)  # setting pointer back to end of arc
+        tu.setheading(arc_heading)
+
+
+def draw_wheel():
+    draw_inner_wheel()
+    draw_segment('red',0)
+    for i in range(2):
+        for colour in colourlist.colour_list[0:12]:
+            draw_segment(colour, 1)
+
+
+def find_on_circle(offset):
+    x = RADIUS * cos(offset * spin_angle)
+    y = RADIUS * sin(offset * spin_angle)
+    return x, y
+
+draw_wheel()
+
+turtle.done()
