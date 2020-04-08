@@ -1,0 +1,11 @@
+﻿Canteen,x,y,Avg price,Operation hours,No. of stalls,Seating capacity,Dietary requirement
+Canteen 1,463,496,$5,7am - 9pm,9,310,-
+Canteen 2,434,418,$4,7am - 9pm ,10,446,Halal
+Canteen 9,444,234,$3,7am - 9pm ,9,292,Halal 
+Canteen 11,479,124,$4,7am - 9pm ,6,210,Halal 
+Canteen 13,239,262,$3,7am - 9pm ,8,210,Halal 
+Canteen 14,291,210,$3,7am - 9pm ,6,270,Halal 
+Canteen 16,236,322,$4,7am - 9pm ,5,304,Halal 
+Quad Cafe,180,555,$5,7am - 9pm ,8,500,Halal & Vegetarian
+North Spine Food Court,191,469,$4,7am - 9pm ,19,800,Halal & Vegetarian
+South Spine Food Court,291,669,$3,7am - 9pm ,15,1050,Halal & Vegetarian
